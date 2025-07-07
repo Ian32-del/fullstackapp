@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+const API_URL = process.env.REACT_APP_API_URL || "/api/message";
+
 
 function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/message")
+    fetch(API_URL)
       .then((res) => res.json())
       .then((data) => setMessage(data.message))
       .catch((err) => console.error(err));
